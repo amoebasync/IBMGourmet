@@ -21,7 +21,7 @@ public class DAO_LoginLogic {
 		PreparedStatement pstmt = null;
 		try {
 			con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "");
-			pstmt = con.prepareStatement("SELECT * FROM member WHERE memberid = '?' AND password = '?'");
+			pstmt = con.prepareStatement("SELECT * FROM member WHERE memberid = ? AND password = ?");
 			pstmt.setString(1,id);
 			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
@@ -36,7 +36,6 @@ public class DAO_LoginLogic {
 			e.printStackTrace();
 			return null;
 		} finally {
-			System.out.println("checkpoint5");
 			if (con != null) {
 				try{
 					pstmt.close();

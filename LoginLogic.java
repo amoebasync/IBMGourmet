@@ -6,7 +6,9 @@ public class LoginLogic {
 		DAO_LoginLogic db = new DAO_LoginLogic();
 		Member user = db.execute(id, password);
 		if(user!=null){
+			System.out.println(user.getUserName());
 			return true;
+
 		}
 		return false;
 	}
